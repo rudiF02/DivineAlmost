@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://l5m7xtpbl0r7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_uvn3x"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="BeatriceTakls" type="CanvasLayer"]
+offset = Vector2(-128, -1980)
+transform = Transform2D(1, 0, 0, 1, -128, -1980)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.6027341, 0.6027341, 0.6027341, 0)
+
+[node name="Label" type="Label" parent="ColorRect"]
+z_index = 3
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Oh, Dante... I see you as a friend"
+label_settings = SubResource("LabelSettings_uvn3x")

@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://stnnmbl1dj4a"]
+
+[ext_resource type="Script" uid="uid://b0jggg112r1l" path="res://game_over.gd" id="1_xeevv"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xeevv")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(15.233655, 22.604805)
+color = Color(0.1807602, 0.15156978, 0.1652858, 0.5764706)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 344.0
+offset_right = 172.0
+offset_bottom = 367.0
+scale = Vector2(4.9120336, 6.3880467)
+text = "GAME OVER"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 536.0
+offset_right = 208.0
+offset_bottom = 544.0
+scale = Vector2(29.759102, 24.808527)
+
+[node name="Label" type="Label" parent="Control/Button2"]
+layout_mode = 0
+offset_left = 0.49168342
+offset_top = 2.0360248
+offset_right = 40.491684
+offset_bottom = 51.036026
+scale = Vector2(0.17688045, 0.15377098)
+text = "QUIT
+"
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 72.00001
+offset_top = 56.000004
+offset_right = 225.0
+offset_bottom = 105.0
+scale = Vector2(3.2397268, 4.608378)
+text = "SHE DOESN'T WANT
+YOU ANYWAYS"
+
+[connection signal="pressed" from="Control/Button2" to="." method="_on_quit_button_pressed"]

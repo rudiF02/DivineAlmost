@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=3 uid="uid://vsj0ca6ifthk"]
+
+[ext_resource type="Script" uid="uid://cm58x12yxfdvu" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://b5tj4g77l503c" path="res://Asset/dante.png" id="2_qhqgy"]
+[ext_resource type="Script" uid="uid://c2kr1loc1b7ml" path="res://scenes/camera_2d.gd" id="3_dqkch"]
+[ext_resource type="AudioStream" uid="uid://cym1wipxvudow" path="res://Asset/Sounds/mixkit-player-jumping-in-a-video-game-2043.wav" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dpinxycn06n5p" path="res://Asset/Sounds/766921__victor_natas__the-adventure.wav" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://dsfv10datotht" path="res://Asset/Sounds/511195__theojt__gates-of-heaven-music.mp3" id="6_tuyoq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(0, 0, 46, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(46, 0, 46, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(92, 0, 46, 120)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(138, 0, 46, 120)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ur7pv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_smehm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 16521
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_dqkch")
+
+[node name="AnimationPlayer" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, -59)
+sprite_frames = SubResource("SpriteFrames_ur7pv")
+autoplay = "default"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(0.25, 0.25)
+offset = Vector2(0, -160)
+ignore_rotation = false
+limit_left = -176
+limit_right = 144
+script = ExtResource("3_dqkch")
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_dqkch")
+
+[node name="HellMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
+
+[node name="PurgatotryHeavenMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tuyoq")
+
+[connection signal="finished" from="HellMusic" to="." method="_on_hell_music_finished"]
+[connection signal="finished" from="PurgatotryHeavenMusic" to="." method="_on_purgatotry_heaven_music_finished"]
